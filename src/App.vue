@@ -1,5 +1,11 @@
 <script>
+
+import PageHeader from './components/PageHeader.vue';
+
 export default {
+  components: {
+    PageHeader,
+  },
   data() {
     return {
       message: "It's Alive!"
@@ -9,9 +15,10 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>{{ message }}</h1>
-  </div>
+  <PageHeader></PageHeader>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+@use './styles/partials/reset';
+@use './styles/general.scss';
+</style>
