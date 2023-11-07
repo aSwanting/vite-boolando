@@ -2,8 +2,40 @@
 export default {
     data() {
         return {
-            title: "Boolando Header"
+
+            headerCategories: [
+                {
+                    name: "Donna",
+                    url: "#",
+                },
+                {
+                    name: "Uomo",
+                    url: "#",
+                },
+                {
+                    name: "Bambini",
+                    url: "#",
+                },
+            ],
+
+            headerIcons: [
+                {
+                    path: "img/user.svg",
+                    url: "#",
+                },
+                {
+                    path: "img/basket.svg",
+                    url: "#",
+                },
+                {
+                    path: "img/heart.svg",
+                    url: "#",
+                },
+            ]
         }
+    },
+    methods: {
+
     }
 }
 </script>
@@ -15,9 +47,8 @@ export default {
 
                 <div class="col categories">
                     <ul>
-                        <li><a href="#">Donna</a></li>
-                        <li><a href="#">Uomo</a></li>
-                        <li><a href="#">Bambini</a></li>
+                        <li v-for="category in headerCategories"><a :href="category.url">{{ category.name }}</a></li>
+
                     </ul>
                 </div>
 
@@ -27,9 +58,7 @@ export default {
 
                 <div class="col icons">
                     <ul>
-                        <li><a href="#"><img src="/img/icons/user.svg" alt=""></a></li>
-                        <li><a href="#"><img src="/img/icons/basket.svg" alt=""></a></li>
-                        <li><a href="#"><img src="/img/icons/heart.svg" alt=""></a></li>
+                        <li v-for="icon in  headerIcons "><a :href="icon.url"><img :src="icon.path"></a></li>
                     </ul>
                 </div>
 
@@ -70,7 +99,7 @@ export default {
 
     .categories,
     .icons {
-        width: 25%;
+        width: 30%;
         display: flex;
         justify-content: space-around;
     }
@@ -86,11 +115,11 @@ export default {
     ul {
         display: flex;
         flex-wrap: wrap;
+        gap: 10px;
 
         a {
             display: block;
             width: fit-content;
-            padding: 5px 10px;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.212);
