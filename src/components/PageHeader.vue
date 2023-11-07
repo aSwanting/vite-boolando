@@ -13,7 +13,7 @@ export default {
         <div class="container">
             <nav class="row">
 
-                <div class="col">
+                <div class="col categories">
                     <ul>
                         <li><a href="#">Donna</a></li>
                         <li><a href="#">Uomo</a></li>
@@ -22,14 +22,14 @@ export default {
                 </div>
 
                 <div class="col header-logo">
-                    <img src="/img/boolean-logo.png" alt="">
+                    <a href="#"><img src="/img/boolean-logo.png" alt=""></a>
                 </div>
 
-                <div class="col">
+                <div class="col icons">
                     <ul>
-                        <li><a href="#">Donna</a></li>
-                        <li><a href="#">Uomo</a></li>
-                        <li><a href="#">Bambini</a></li>
+                        <li><a href="#"><img src="/img/icons/user.svg" alt=""></a></li>
+                        <li><a href="#"><img src="/img/icons/basket.svg" alt=""></a></li>
+                        <li><a href="#"><img src="/img/icons/heart.svg" alt=""></a></li>
                     </ul>
                 </div>
 
@@ -43,20 +43,23 @@ export default {
 
 
 .page-header {
-    padding: 10px;
+    padding: 15px 20px;
     color: white;
     font-size: 13px;
     font-weight: bold;
     background-color: $main-color;
     box-shadow: 0px 3px 5px rgb(0, 0, 0, 0.3);
 
+    img {
+        display: block;
+    }
+
     .row {
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
 
     .header-logo {
-        flex-grow: 1;
 
         img {
             max-width: 124px;
@@ -65,13 +68,34 @@ export default {
         }
     }
 
-    ul {
+    .categories,
+    .icons {
+        width: 25%;
         display: flex;
-        gap: 10px;
+        justify-content: space-around;
     }
 
-    a {
-        background-color: rgb(64, 95, 67);
+    .categories {
+        justify-content: flex-start;
+    }
+
+    .icons {
+        justify-content: flex-end;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        a {
+            display: block;
+            width: fit-content;
+            padding: 5px 10px;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.212);
+            }
+        }
     }
 }
 </style>
