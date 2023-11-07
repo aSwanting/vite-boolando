@@ -2,12 +2,12 @@ html {
     font-family: sans-serif;
 }
 
-#app {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
+// #app {
+//     height: 100vh;
+//     overflow: hidden;
+//     display: flex;
+//     flex-direction: column;
+// }
 
 .container {
     max-width: 900px;
@@ -18,4 +18,8 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.col-4 {
+    flex-basis: calc(100% / 12 * 4);
 }

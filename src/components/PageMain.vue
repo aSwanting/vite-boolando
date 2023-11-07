@@ -1,5 +1,10 @@
 <script>
+import Product from './Product.vue';
+
 export default {
+    components: {
+        Product
+    },
     data() {
         return {
             title: "Boolando Main"
@@ -9,13 +14,28 @@ export default {
 </script>
 
 <template>
-    <section class="page-main"></section>
+    <section class="page-main">
+        <div class="container">
+            <div class="row">
+
+                <div v-for="n in 6" :key="n" class="col-4">
+                    <Product />
+                </div>
+
+            </div>
+        </div>
+
+    </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
 
-.page-footer {
-    flex-grow: 1;
+.page-main {
+    padding: 20px;
+
+    .row {
+        row-gap: 10px;
+    }
 }
 </style>
