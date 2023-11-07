@@ -39,6 +39,8 @@ export default {
 
 .page-main {
     padding: 20px;
+    flex-grow: 1;
+    overflow: auto;
 
     .row {
         row-gap: 20px;

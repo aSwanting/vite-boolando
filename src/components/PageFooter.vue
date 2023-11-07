@@ -17,6 +17,6 @@ export default {
 
 .page-footer {
     background-color: $dark-color;
-    padding: 20px;
+    padding: 30px;
 }
 </style>

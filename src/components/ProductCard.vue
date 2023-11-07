@@ -1,4 +1,5 @@
 <script>
+
 export default {
     props: {
         product: {
@@ -6,6 +7,17 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            isDiscounted: false
+        };
+    },
+    // mounted() {
+    //     const discounts = this.product.badges.filter(badge => badge.type === 'discount');
+    //     if (discounts.length) {
+    //         this.discount = parseInt(discounts[0].value.replace('-', ''));
+    //     }
+    // },
     methods: {
         getImagePath(imgPath) {
             return new URL(imgPath, import.meta.url).href
@@ -17,11 +29,18 @@ export default {
 
         getDiscount() {
 
-            const price = this.product.price
-            const discount = (parseInt(this.product.badges.at(-1).value) / 100) + 1
-            const discountedPrice = (price * discount).toFixed(2)
-            return discountedPrice
+            for (let badge of this.product.badges) {
+                if (badge.type === "discount") {
 
+                    this.isDiscounted = true
+
+                    const price = this.product.price
+                    const discount = (parseInt(badge.value) / 100) + 1
+                    const discountedPrice = (price * discount).toFixed(2)
+                    return discountedPrice
+
+                }
+            }
         }
     }
 }
@@ -52,9 +71,9 @@ export default {
             <p class="item-name">{{ product.name }}</p>
 
             <div class="price">
-                <p class="item-price" v-show="product.badges.at(-1).type === 'discount'">
+                <p class="item-price" v-show="isDiscounted">
                     {{ getDiscount() }} &euro;</p>
-                <p :class="[product.badges.at(-1).type === 'discount' ? 'old-price' : 'item-price']">{{ product.price }}
+                <p :class="[isDiscounted ? 'old-price' : 'item-price']">{{ product.price }}
                     &euro;
                 </p>
             </div>
@@ -125,13 +144,14 @@ export default {
 
             .tag {
                 background-color: green;
+                order: 1;
             }
         }
 
         .card-fav {
             position: absolute;
             right: 0px;
-            top: 10px;
+            top: 20px;
             height: 34px;
             width: 30px;
             padding: 6px;
@@ -149,7 +169,7 @@ export default {
                 background-color: $fav-color;
 
                 &:hover {
-                    fill: black;
+                    opacity: 0.8;
                 }
             }
         }

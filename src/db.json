@@ -80,10 +80,6 @@
         {
           "type": "tag",
           "value": "Sostenibilità"
-        },
-        {
-          "type": "discount",
-          "value": "-50%"
         }
       ]
     },
@@ -99,6 +95,10 @@
         {
           "type": "tag",
           "value": "Sostenibilità"
+        },
+        {
+          "type": "discount",
+          "value": "-50%"
         }
       ]
     }
