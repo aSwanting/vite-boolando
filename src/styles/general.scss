@@ -7,40 +7,8 @@ body {
     margin: 0 auto;
 }
 
-[class^="page-"] {
-    padding-inline: 10px;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.page-content {
-    flex-grow: 1;
-}
-
 .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-.space-between {
-    justify-content: space-between;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.vertical-align {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.col-4 {
-    flex-basis: calc(((100% / 12) * 4) - 15px);
 }
