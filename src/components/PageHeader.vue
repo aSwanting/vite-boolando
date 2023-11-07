@@ -86,6 +86,7 @@ export default {
     .row {
         justify-content: space-between;
         align-items: center;
+        padding-inline: 10px;
     }
 
     .header-logo {
