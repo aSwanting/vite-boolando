@@ -24,7 +24,7 @@ export default {
         <div class="container">
             <div class="row">
 
-                <div v-for="(product, i) in productsJson.products" :key="i" class="col-4">
+                <div v-for="(product, i) in productsJson.products" :key="i" class="col-4 product-card">
                     <ProductCard :product="product" />
                 </div>
 
@@ -41,7 +41,11 @@ export default {
     padding: 20px;
 
     .row {
-        row-gap: 10px;
+        row-gap: 20px;
+    }
+
+    .product-card {
+        padding-inline: 10px;
     }
 }
 </style>

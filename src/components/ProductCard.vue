@@ -5,6 +5,15 @@ export default {
             type: Object,
             required: true
         }
+    },
+    methods: {
+        getImagePath(imgPath) {
+            return new URL(imgPath, import.meta.url).href
+        },
+
+        toggleFavorite() {
+            console.log(this.product.isInFavorites)
+        },
     }
 }
 </script>
@@ -14,10 +23,10 @@ export default {
 
         <div class="card-img">
             <figure class="item-img">
-                <img src="/img/1.webp" alt="">
+                <img :src="getImagePath(`../assets/${product.frontImage}`)" alt="">
             </figure>
             <figure class="alt-img">
-                <img src="/img/1b.webp" alt="">
+                <img :src="getImagePath(`../assets/${product.backImage}`)" alt="">
             </figure>
             <div class="row card-overlay">
                 <div class="col" :class="badge.type" v-for="badge in product.badges">{{ badge.value }}</div>
@@ -43,10 +52,12 @@ export default {
 
 
 .item-card {
-    padding: 0 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
 
     .card-img {
-        // margin-bottom: 8px;
         position: relative;
         overflow: hidden;
 
@@ -123,6 +134,7 @@ export default {
 
     .card-description {
 
+        padding: 10px;
         line-height: 1em;
 
         .item-brand {
