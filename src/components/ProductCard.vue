@@ -1,23 +1,20 @@
 <script>
 
 export default {
+
     props: {
         product: {
             type: Object,
             required: true
         }
     },
+
     data() {
         return {
             isDiscounted: false
         };
     },
-    // mounted() {
-    //     const discounts = this.product.badges.filter(badge => badge.type === 'discount');
-    //     if (discounts.length) {
-    //         this.discount = parseInt(discounts[0].value.replace('-', ''));
-    //     }
-    // },
+
     methods: {
         getImagePath(imgPath) {
             return new URL(imgPath, import.meta.url).href
