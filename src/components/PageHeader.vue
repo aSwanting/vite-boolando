@@ -74,8 +74,8 @@ export default {
 .page-header {
     padding: 15px 20px;
     color: white;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 600;
     background-color: $main-color;
     box-shadow: 0px 3px 5px rgb(0, 0, 0, 0.3);
 

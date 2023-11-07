@@ -14,7 +14,7 @@ export default {
     return {
       message: "It's Alive!"
     }
-  }
+  },
 }
 </script>
 

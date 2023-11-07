@@ -1,14 +1,20 @@
 <script>
-import Product from './Product.vue';
+import ProductCard from './ProductCard.vue';
+import productsJson from '../db.json'
+
 
 export default {
     components: {
-        Product
+        ProductCard,
     },
     data() {
         return {
-            title: "Boolando Main"
+            title: "Boolando Main",
+            productsJson
         }
+    },
+    mounted() {
+        console.log(this.productsJson.products)
     }
 }
 </script>
@@ -18,8 +24,8 @@ export default {
         <div class="container">
             <div class="row">
 
-                <div v-for="n in 6" :key="n" class="col-4">
-                    <Product />
+                <div v-for="(product, i) in productsJson.products" :key="i" class="col-4">
+                    <ProductCard :product="product" />
                 </div>
 
             </div>
