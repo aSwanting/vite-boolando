@@ -13,9 +13,6 @@ export default {
             productsJson
         }
     },
-    mounted() {
-        console.log(this.productsJson.products)
-    }
 }
 </script>
 

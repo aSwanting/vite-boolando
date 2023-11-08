@@ -11,7 +11,7 @@ export default {
 
     data() {
         return {
-            isDiscounted: false
+            discountMultiplier: 1
         };
     },
 
@@ -24,29 +24,29 @@ export default {
             this.product.isInFavorites = !this.product.isInFavorites
         },
 
-        getDiscount() {
-
-            for (let badge of this.product.badges) {
-                if (badge.type === "discount") {
-
-                    this.isDiscounted = true
-
-                    const price = this.product.price
-                    const discount = (parseInt(badge.value) / 100) + 1
-                    const discountedPrice = (price * discount).toFixed(2)
-                    return discountedPrice
-
-                }
-            }
+        getDiscountRate() {
+            const discount = this.product.badges.find(badge => badge.type === "discount")
+            if (discount) this.discountMultiplier = (parseInt(discount.value) / 100) + 1
         }
+    },
+
+    computed: {
+        discountedPrice() {
+            return (this.product.price * this.discountMultiplier).toFixed(2)
+        }
+    },
+
+    created() {
+        this.getDiscountRate()
     }
 }
+
 </script>
 
 <template>
     <div class="item-card">
 
-        <div class="card-img" @click="getDiscount()">
+        <div class="card-img">
             <figure class="item-img">
                 <img :src="getImagePath(`../assets/${product.frontImage}`)" alt="">
             </figure>
@@ -68,11 +68,8 @@ export default {
             <p class="item-name">{{ product.name }}</p>
 
             <div class="price">
-                <p class="item-price" v-show="isDiscounted">
-                    {{ getDiscount() }} &euro;</p>
-                <p :class="[isDiscounted ? 'old-price' : 'item-price']">{{ product.price }}
-                    &euro;
-                </p>
+                <p class="item-price" v-if="discountMultiplier !== 1">{{ discountedPrice }} &euro;</p>
+                <p :class="[discountMultiplier !== 1 ? 'old-price' : 'item-price']">{{ product.price }} &euro; </p>
             </div>
 
         </div>
