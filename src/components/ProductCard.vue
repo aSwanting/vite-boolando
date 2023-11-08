@@ -1,20 +1,16 @@
 <script>
-
 export default {
-
     props: {
         product: {
             type: Object,
             required: true
         }
     },
-
     data() {
         return {
             discountMultiplier: 1
         };
     },
-
     methods: {
         getImagePath(imgPath) {
             return new URL(imgPath, import.meta.url).href
@@ -29,13 +25,11 @@ export default {
             if (discount) this.discountMultiplier = (parseInt(discount.value) / 100) + 1
         }
     },
-
     computed: {
         discountedPrice() {
             return (this.product.price * this.discountMultiplier).toFixed(2)
         }
     },
-
     created() {
         this.getDiscountRate()
     }

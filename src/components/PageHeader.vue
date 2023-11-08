@@ -116,14 +116,14 @@ export default {
     ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 15px;
 
         a {
             display: block;
             width: fit-content;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.212);
+                filter: brightness(0.9);
             }
         }
     }

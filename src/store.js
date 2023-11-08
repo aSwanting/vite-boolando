@@ -1,6 +1,8 @@
 import { reactive } from "vue";
-import productsJson from './db.json';
 
-export const store = reactive({
-    products: productsJson.products
+const store = reactive({
+    products: [],
+    productsUrl: 'http://localhost:3000/products',
 })
+
+export default store

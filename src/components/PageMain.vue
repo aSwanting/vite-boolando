@@ -1,6 +1,7 @@
 <script>
 import ProductCard from './ProductCard.vue';
-import { store } from "../store.js";
+import store from "../store.js";
+import axios from 'axios';
 
 
 export default {
@@ -10,11 +11,14 @@ export default {
     data() {
         return {
             title: "Boolando Main",
-            store
+            store,
+            storeUrl: store.productsUrl
         }
     },
-    created() {
-        console.log('store', this.store)
+    mounted() {
+        axios.get(this.storeUrl).then(response => {
+            this.store.products = response.data
+        })
     }
 }
 </script>
