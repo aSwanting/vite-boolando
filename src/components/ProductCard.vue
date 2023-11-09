@@ -1,4 +1,5 @@
 <script>
+import store from "../store.js";
 export default {
     props: {
         product: {
@@ -8,7 +9,7 @@ export default {
     },
     data() {
         return {
-            discountMultiplier: 1
+            store,
         };
     },
     methods: {
@@ -19,20 +20,7 @@ export default {
         toggleFavorite() {
             this.product.isInFavorites = !this.product.isInFavorites
         },
-
-        getDiscountRate() {
-            const discount = this.product.badges.find(badge => badge.type === "discount")
-            if (discount) this.discountMultiplier = (parseInt(discount.value) / 100) + 1
-        }
     },
-    computed: {
-        discountedPrice() {
-            return (this.product.price * this.discountMultiplier).toFixed(2)
-        }
-    },
-    created() {
-        this.getDiscountRate()
-    }
 }
 
 </script>
@@ -59,11 +47,11 @@ export default {
 
         <div class="card-description">
             <p class="item-brand">{{ product.brand }}</p>
-            <p class="item-name">{{ product.name }}</p>
+            <p class="item-name" @click="$emit('show', product)">{{ product.name }}</p>
 
             <div class="price">
-                <p class="item-price" v-if="discountMultiplier !== 1">{{ discountedPrice }} &euro;</p>
-                <p :class="[discountMultiplier !== 1 ? 'old-price' : 'item-price']">{{ product.price }} &euro; </p>
+                <p class="item-price" v-if="product.hasDiscount">{{ product.discountedPrice }} &euro;</p>
+                <p :class="[product.hasDiscount ? 'old-price' : 'item-price']">{{ product.price }} &euro; </p>
             </div>
 
         </div>
@@ -110,7 +98,6 @@ export default {
         &:hover .alt-img {
             left: 0%;
         }
-
 
         .card-overlay {
             position: absolute;
@@ -177,6 +164,7 @@ export default {
             text-transform: uppercase;
             font-size: 17px;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .price {

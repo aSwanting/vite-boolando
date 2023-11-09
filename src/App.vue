@@ -3,7 +3,7 @@
 import PageHeader from './components/PageHeader.vue';
 import PageMain from './components/PageMain.vue';
 import PageFooter from './components/PageFooter.vue';
-import axios from 'axios';
+
 import store from "./store.js";
 
 export default {
@@ -18,10 +18,9 @@ export default {
       store,
     }
   },
-  mounted() {
-    axios.get(this.store.productsUrl).then(response => {
-      this.store.products = response.data
-    })
+  created() {
+    store.fetchData()
+    console.log(store)
   }
 }
 </script>

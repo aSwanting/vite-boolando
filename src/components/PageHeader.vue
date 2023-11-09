@@ -34,9 +34,6 @@ export default {
             ]
         }
     },
-    methods: {
-
-    }
 }
 </script>
 
@@ -58,7 +55,7 @@ export default {
 
                 <div class="col icons">
                     <ul>
-                        <li v-for="icon in  headerIcons "><a :href="icon.url"><img :src="icon.path"></a></li>
+                        <li v-for="icon in headerIcons "><a :href="icon.url"><img :src="icon.path"></a></li>
                     </ul>
                 </div>
 
